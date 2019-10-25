@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.pxohlqo.algplayground">
+
+    <application>
+        <activity android:name=".view.playGround.PlayGroundAty"></activity>
+        <activity
+            android:name=".view.index.IndexActivity"
+            android:exported="true"></activity>
+    </application>
+
+</manifest>
