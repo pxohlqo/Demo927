@@ -20,8 +20,8 @@ dependencies {
 
 
     // copy from https://android.jlelse.eu/merryannotation-your-first-annotation-processor-in-kotlin-android-eb3af4ab3402
-    kapt project(':algplayground')
-    implementation project(':algplayground')
+    kapt project(':annotation')
+    compileOnly project(':annotation')
 
     // configuration generator for service providers
     implementation "com.google.auto.service:auto-service:1.0-rc4"

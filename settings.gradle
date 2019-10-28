@@ -1,2 +1,2 @@
-include ':app', ':route', ':algplayground', ':annotationprocessor', ':annotationProcessor'
+include ':app', ':route', ':algplayground', ':annotationprocessor', ':annotationProcessor', ':annotation'
 rootProject.name='Demo927'
