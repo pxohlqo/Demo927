@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -37,7 +38,27 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
     implementation rootProject.ext.dependencies.ankoCommons
+
+    kapt project(':annotationProcessor')
 }
+
+// copy from https://android.jlelse.eu/merryannotation-your-first-annotation-processor-in-kotlin-android-eb3af4ab3402
+sourceCompatibility = "7"
+targetCompatibility = "7"
+
+repositories {
+    mavenCentral()
+}
+//compileKotlin {
+//    kotlinOptions {
+//        jvmTarget = "1.8"
+//    }
+//}
+//compileTestKotlin {
+//    kotlinOptions {
+//        jvmTarget = "1.8"
+//    }
+//}
 
 task encodeSolus {
     println("=================encoding")
