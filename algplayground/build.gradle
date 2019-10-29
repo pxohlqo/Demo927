@@ -40,6 +40,7 @@ dependencies {
     implementation rootProject.ext.dependencies.ankoCommons
 
     kapt project(':annotationProcessor')
+    implementation project(':annotation')
 }
 
 // copy from https://android.jlelse.eu/merryannotation-your-first-annotation-processor-in-kotlin-android-eb3af4ab3402
