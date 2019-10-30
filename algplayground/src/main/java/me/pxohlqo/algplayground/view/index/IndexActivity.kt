@@ -36,4 +36,8 @@ class IndexActivity : AppCompatActivity(), AnkoLogger {
         val method = clazz.getDeclaredMethod("solve")
         info { "===========" + method.invoke(clazz.newInstance())}
     }
+
+//    fun findSolus() {
+//        val soluContentsPath =
+//    }
 }

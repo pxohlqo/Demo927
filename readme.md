@@ -1,7 +1,6 @@
 ## ➡cursor
-1. ~~[ ]编译脚本，编译时打包solution~~
-2. [ ]编译时读取注解生成表单文件记录title、description、path -- 3] @AnnotationProcessor.kt
-3. [x] 运行时动态加载dex
+1. [ ] gradle 添加 task 注解处理完成后 res 打包之前将目录文件拷至res/raw
+
 
 
 ### *参考资料*

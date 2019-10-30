@@ -39,8 +39,21 @@ dependencies {
 
     implementation rootProject.ext.dependencies.ankoCommons
 
-    kapt project(':annotationProcessor')
-    implementation project(':annotation')
+    compileOnly project(':soluInfo')
+    kapt project(':soluInfo')
+    annotationProcessor project(':soluInfo')
+//    implementation project(':annotation')
+}
+
+// copy from https://github.com/Kotlin/kotlin-examples/blob/master/gradle/kotlin-code-generation/example/build.gradle
+
+apply plugin: 'idea'
+
+idea {
+    module {
+        sourceDirs += files('build/generated/source/kapt/main', 'build/generated/source/kaptKotlin/main')
+        generatedSourceDirs += files('build/generated/source/kapt/main', 'build/generated/source/kaptKotlin/main')
+    }
 }
 
 // copy from https://android.jlelse.eu/merryannotation-your-first-annotation-processor-in-kotlin-android-eb3af4ab3402
@@ -50,21 +63,28 @@ targetCompatibility = "7"
 repositories {
     mavenCentral()
 }
-//compileKotlin {
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
+
+//task testDepends2 {
+//    println("---------------task first")
 //}
-//compileTestKotlin {
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
+//task testDepends3(dependsOn: testDepends2) {
+//    println("---------------task next")
 //}
 
-task encodeSolus {
-    println("=================encoding")
-}
-
-task generateSolusIndex {
-    println("=================generating")
-}
+//task copySoluContentToRaw(dependsOn: kaptReleaseKotlin) {
+//    doFirst {
+//        println("=-=-=-=-=-=-=Delete previous content")
+//        delete(file("${projectDir}/src/main/res/raw/Solutions.CONTENT"))
+//    }
+//    doLast {
+//        println('=-=-=-=-=-=-Copying SoluContent')
+//        def soluCont = file("${projectDir}/build/generated/source/kaptKotlin/debug/Solutions.CONTENT")
+//        println(soluCont.length())
+//        copy {
+//            from file("${projectDir}/build/generated/source/kaptKotlin/debug/Solutions.CONTENT")
+//            into "${projectDir}/src/main/res/raw"
+//        }
+//
+//
+//    }
+//}
