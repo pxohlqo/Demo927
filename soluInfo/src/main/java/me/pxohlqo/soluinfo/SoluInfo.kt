@@ -37,7 +37,6 @@ class SoluInfoProcessor : AbstractProcessor() {
         val soluInfoAry = mutableListOf<ArrayList<String>>()
         roundEnv!!.getElementsAnnotatedWith(SolutionInfo::class.java).forEach {
             val elem = it.getAnnotation(SolutionInfo::class.java)
-            it.simpleName
             val elemInfo = arrayListOf(elem.title, elem.description, elem.path)
             soluInfoAry.add(elemInfo)
         }
