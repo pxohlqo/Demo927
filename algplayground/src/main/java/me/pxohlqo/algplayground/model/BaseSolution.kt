@@ -14,4 +14,10 @@ abstract class BaseSolution {
     }
 
     abstract fun solve(): String
+
+    companion object {
+        fun String.toIntArray(s: String): List<Int> {
+            return s.removeSurrounding("[", "]").split(",").map { it.toInt() }
+        }
+    }
 }

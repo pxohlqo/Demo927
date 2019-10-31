@@ -1,6 +1,7 @@
 package me.pxohlqo.soluinfo
 
 import java.io.File
+import java.net.URI
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.TypeElement
@@ -11,7 +12,7 @@ annotation class SolutionInfo(val title: String, val description: String, val pa
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedAnnotationTypes("me.pxohlqo.soluinfo.SolutionInfo")
-@SupportedOptions(SoluInfoProcessor.KAPT_KOTLIN_GENERATED_OPTION_NAME)
+@SupportedOptions(SoluInfoProcessor.CONTENT)
 class SoluInfoProcessor : AbstractProcessor() {
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
         return mutableSetOf(SolutionInfo::class.java.name)
@@ -36,28 +37,30 @@ class SoluInfoProcessor : AbstractProcessor() {
         val soluInfoAry = mutableListOf<ArrayList<String>>()
         roundEnv!!.getElementsAnnotatedWith(SolutionInfo::class.java).forEach {
             val elem = it.getAnnotation(SolutionInfo::class.java)
+            it.simpleName
             val elemInfo = arrayListOf(elem.title, elem.description, elem.path)
             soluInfoAry.add(elemInfo)
         }
 
-        val kaptKotlinGeneratedDir =
-            processingEnv.options[KAPT_KOTLIN_GENERATED_OPTION_NAME] ?: run {
-                            processingEnv.messager.printMessage(Diagnostic.Kind.ERROR, "Can't find the target directory for generated Kotlin files.")
-                return false
-            }
-        writeFile(kaptKotlinGeneratedDir, soluInfoAry)
+        writeFile(soluInfoAry)
 
         return true
     }
 
-    private fun writeFile(fileDir: String, list: List<ArrayList<String>>) {
+    private fun writeFile(list: List<ArrayList<String>>) {
+        val kaptKotlinGeneratedDir =
+            processingEnv.options[KAPT_KOTLIN_GENERATED_OPTION_NAME] ?: run {
+                processingEnv.messager.printMessage(Diagnostic.Kind.ERROR, "Can't find the target directory for generated Kotlin files.")
+                return
+            }
+        val contentDir = kaptKotlinGeneratedDir.replaceAfter("algplayground/", "src/main/assets/solutionsContent/solutions.CONTENT")
         if (list.isNotEmpty()) {
-            val f = File(fileDir, "Solutions.CONTENT")
+            val f = File(contentDir)
             f.writeText("")
             list.forEach {
-                f.appendText("Solution=${it[0]} \n")
-                f.appendText("Description=${it[1]} \n")
-                f.appendText("Path=${it[2]} \n")
+                f.appendText("SOLUTION=${it[0]}\n")
+                f.appendText("DESCRIPTION=${it[1]}\n")
+                f.appendText("PATH=${it[2]}\n")
                 f.appendText("\n")
             }
         }
@@ -65,5 +68,6 @@ class SoluInfoProcessor : AbstractProcessor() {
 
     companion object {
         const val KAPT_KOTLIN_GENERATED_OPTION_NAME = "kapt.kotlin.generated"
+        const val CONTENT = "content"
     }
 }

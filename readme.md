@@ -1,5 +1,13 @@
+## TODO
+#### High Priority!!!
+#### Normal Priority==
+- [ ] 提取读目录文件
+- [ ] 提取从目录加载题解类
+#### Low Priority...
+- [ ] 从网络加载类
+
 ## ➡cursor
-1. [ ] gradle 添加 task 注解处理完成后 res 打包之前将目录文件拷至res/raw
+1. [ ]
 
 
 
@@ -7,3 +15,6 @@
 1. 动态加载dex https://blog.csdn.net/a2923790861/article/details/80539862
 2. 注解 https://blog.csdn.net/feint123/article/details/77861740
 3. kotlin注解编译期生成代码 https://android.jlelse.eu/merryannotation-your-first-annotation-processor-in-kotlin-android-eb3af4ab3402
+
+### 存在问题
+[ ] 注解处理器生成目录文件后需要手动运行task拷贝目录文件

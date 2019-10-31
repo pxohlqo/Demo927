@@ -51,8 +51,8 @@ apply plugin: 'idea'
 
 idea {
     module {
-        sourceDirs += files('build/generated/source/kapt/main', 'build/generated/source/kaptKotlin/main')
-        generatedSourceDirs += files('build/generated/source/kapt/main', 'build/generated/source/kaptKotlin/main')
+//        sourceDirs += files('build/generated/source/kapt/main', 'build/generated/source/kaptKotlin/main')
+//        generatedSourceDirs += files('build/generated/source/kapt/main', 'build/generated/source/kaptKotlin/main')
     }
 }
 
@@ -67,14 +67,18 @@ repositories {
 //task testDepends2 {
 //    println("---------------task first")
 //}
-//task testDepends3(dependsOn: testDepends2) {
-//    println("---------------task next")
+//task testDepends3(dependsOn: kaptDebugKotlin) {
+//    doLast {
+//        println("---------------task next")
+//
+//    }
 //}
 
-//task copySoluContentToRaw(dependsOn: kaptReleaseKotlin) {
+//dependsOn not working NEED TO BE SOLVED
+//task copySoluContentToRaw(dependsOn: 'kaptDebugKotlin') {
 //    doFirst {
 //        println("=-=-=-=-=-=-=Delete previous content")
-//        delete(file("${projectDir}/src/main/res/raw/Solutions.CONTENT"))
+//        delete(file("${projectDir}/src/main/assets/solutionsContent/Solutions.CONTENT"))
 //    }
 //    doLast {
 //        println('=-=-=-=-=-=-Copying SoluContent')
@@ -82,7 +86,7 @@ repositories {
 //        println(soluCont.length())
 //        copy {
 //            from file("${projectDir}/build/generated/source/kaptKotlin/debug/Solutions.CONTENT")
-//            into "${projectDir}/src/main/res/raw"
+//            into "${projectDir}/src/main/assets/solutionsContent"
 //        }
 //
 //
