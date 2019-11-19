@@ -1,5 +1,6 @@
 package me.pxohlqo.algplayground
 
+import me.pxohlqo.algplayground.model.leetcode.P300
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +14,10 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+
+    @Test
+    fun testLeetCodeSolu() {
+        val solu = P300()
     }
 }

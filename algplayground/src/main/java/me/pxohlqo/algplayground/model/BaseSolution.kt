@@ -4,16 +4,16 @@ abstract class BaseSolution {
 
     var input: String? = ""
 
-//    abstract var name: String
-//    abstract var desc: String
-    // 使用注解动态加载标题和简介 https://blog.csdn.net/feint123/article/details/77861740
-
-    open fun input(inputString: String?): BaseSolution {
-        this.input = inputString
+    open fun input(vararg inputString: String): BaseSolution {
+        this.input = inputString.toString()
         return this
     }
 
-    abstract fun solve(): String
+    open fun result(): String {
+        return solve(input?:"")
+    }
+
+    abstract fun solve(vararg input: Any): String
 
     companion object {
         fun String.toIntArray(s: String): List<Int> {

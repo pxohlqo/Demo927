@@ -8,9 +8,10 @@ import me.pxohlqo.soluinfo.SolutionInfo;
 
 @SolutionInfo(title = "demo title", description = "demo description", path = "me.pxohlqo.algplayground.model.misc.demo.DemoSolu")
 public class DemoSolu extends BaseSolution {
+
     @NotNull
     @Override
-    public String solve() {
-        return "demo result";
+    public String solve(@NotNull Object... input) {
+        return "Demo result";
     }
 }

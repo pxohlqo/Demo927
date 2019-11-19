@@ -33,15 +33,27 @@ import me.pxohlqo.soluinfo.SolutionInfo;
                 "  Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.",
         path = "me.pxohlqo.algplayground.model.leetcode.P300")
 public class P300 extends BaseSolution {
-    @NotNull
-    @Override
-    public String solve() {
-        return null;
-    }
 
-    private int approach1(int[] nums, int prev, int curpos) {
+
+    private int approach1(int[] nums) {
 
         return 0;
+    }
+
+    private int testApproach(int[] nums) {
+        return 4;
+    }
+
+
+    @NotNull
+    @Override
+    public String solve(@NotNull Object... input) {
+        int inputLength = input.length;
+        int[] nums = new int[inputLength];
+        for (int i = 0; i < inputLength; i++) {
+            nums[i] = (int) input[i];
+        }
+        return Integer.valueOf(testApproach(nums)).toString();
     }
 }
 

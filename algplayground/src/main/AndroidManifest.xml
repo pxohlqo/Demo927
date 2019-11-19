@@ -3,7 +3,8 @@
     package="me.pxohlqo.algplayground">
 
     <application>
-        <activity android:name=".view.playGround.PlayGroundAty"></activity>
+        <activity android:name=".view.playGround.PlayGroundAty"
+            android:theme="@style/Theme.AppCompat"></activity>
         <activity
             android:name=".view.index.IndexActivity"
             android:exported="true"
