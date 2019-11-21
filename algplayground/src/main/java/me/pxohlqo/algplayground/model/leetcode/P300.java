@@ -2,6 +2,8 @@ package me.pxohlqo.algplayground.model.leetcode;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Set;
+
 import me.pxohlqo.algplayground.model.BaseSolution;
 import me.pxohlqo.soluinfo.SolutionInfo;
 
@@ -30,8 +32,7 @@ import me.pxohlqo.soluinfo.SolutionInfo;
                 " \n" +
                 "  Input: [10,9,2,5,3,7,101,18]\n" +
                 "  Output: 4\n" +
-                "  Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.",
-        path = "me.pxohlqo.algplayground.model.leetcode.P300")
+                "  Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.")
 public class P300 extends BaseSolution {
 
 
@@ -47,13 +48,9 @@ public class P300 extends BaseSolution {
 
     @NotNull
     @Override
-    public String solve(@NotNull Object... input) {
-        int inputLength = input.length;
-        int[] nums = new int[inputLength];
-        for (int i = 0; i < inputLength; i++) {
-            nums[i] = (int) input[i];
-        }
-        return Integer.valueOf(testApproach(nums)).toString();
+    protected Object performSolve(@NotNull Object... input) {
+        int[] realInput = new int[input.length];
+        return testApproach(realInput);
     }
 }
 

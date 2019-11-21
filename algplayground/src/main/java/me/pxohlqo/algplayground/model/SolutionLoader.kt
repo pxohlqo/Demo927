@@ -5,12 +5,20 @@ import dalvik.system.PathClassLoader
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
-class SolutionLoader(val context: Context) : AnkoLogger {
+class SolutionLoader private constructor(val context: Context) : AnkoLogger {
 
-    val solutions = mutableListOf<SolutionInfoItem>()
+    private val solutions = mutableListOf<SolutionInfoItem>()
 
     init {
         readSolusContent()
+    }
+
+    fun getCount(): Int = solutions.size
+
+    fun getTitles(): Array<String> {
+        val titles = Array<String>(solutions.size) { "" }
+        solutions.forEachIndexed { i, soluItem  -> titles[i] = soluItem.title }
+        return titles
     }
 
     private fun readSolusContent() {
@@ -46,7 +54,7 @@ class SolutionLoader(val context: Context) : AnkoLogger {
                 }
             }
         }
-        info { solutions }
+//        info { solutions }
     }
 
     fun loadSoluByIndex(soluIndex: Int): WrappedSolutionClass {
@@ -54,34 +62,31 @@ class SolutionLoader(val context: Context) : AnkoLogger {
         return WrappedSolutionClass(classLoader.loadClass(solutions[soluIndex].path))
     }
 
-
     class WrappedSolutionClass(val solution: Class<*>) {
-
-        private fun callSolve(vararg arg: String): String {
-            val solveMethod = solution.getDeclaredMethod("solve", Array<String>::class.java)
-            return solveMethod.invoke(solution.newInstance(), arg)!!.toString()
-        }
 
         /**
          * @return [String, String] first string for solution return, second string for time casting in millis.
          * */
-        private fun callSolveWithTimer(vararg args: String): List<String> {
-            val solveMethod = solution.getDeclaredMethod("solve", Array<Any>::class.java)
+        private fun callSolve(vararg input: String): Array<String> {
+//            println("-=-=-=-=-=-=")
+//            solution.superclass?.methods!!.forEach { println(it.name) }
+            val solveMethod = solution.superclass!!.getMethod("solve", Array<String>::class.java)
             val caller = solution.newInstance()
-            val beforeTime = System.currentTimeMillis()
-            val solveReturn = solveMethod.invoke(caller, args)
-            val afterTime = System.currentTimeMillis()
-            val returnString = solveReturn?.toString() ?: "NO OUTPUT"
-            return listOf(returnString, (afterTime - beforeTime).toString())
+            val solveReturn = solveMethod.invoke(caller, input) as Array<String>
+//            println("in callSolve ${solveReturn[0]}")
+            return solveReturn
 
         }
 
-        fun solve(vararg args: String): String {
-            val returnString = "Input: $args"
-            if (args.isEmpty()) returnString.plus("NO INPUT")
-            val solveResult = callSolveWithTimer(*args)
-            returnString.plus("${System.lineSeparator()}Output: ${solveResult[0]}${System.lineSeparator()}Cast time: ${solveResult[1]}ms")
-            return returnString
+        fun solve(vararg input: String): String {
+            println("-=-=-=-=-")
+            val returnString = StringBuilder("Input: ")
+            input.forEach { returnString.append(it) }
+            if (input.isEmpty()) returnString.append("NO INPUT")
+            val solveResult = callSolve(*input)
+            println("in loader solve: ${solveResult[1]}")
+            returnString.append("${System.lineSeparator()}Output: ${solveResult[0]}${System.lineSeparator()}Cast time: ${solveResult[1]}ms")
+            return returnString.toString()
         }
 
         @Deprecated("Not Implement")
@@ -106,6 +111,17 @@ class SolutionLoader(val context: Context) : AnkoLogger {
             }
         }
 
+        private var instance: SolutionLoader? = null
 
+        fun get(context: Context): SolutionLoader {
+            if (instance == null) {
+                synchronized(SolutionLoader::class) {
+                    if (instance==null) {
+                        instance = SolutionLoader(context)
+                    }
+                }
+            }
+            return instance!!
+        }
     }
 }

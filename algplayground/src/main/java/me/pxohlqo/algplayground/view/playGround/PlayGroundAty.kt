@@ -13,7 +13,7 @@ class PlayGroundAty : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play_ground_aty)
 
-        val resultString = SolutionLoader(this).loadSoluByIndex(1).solve("1 2 3 4 5")
+        val resultString = SolutionLoader.get(this).loadSoluByIndex(intent.getIntExtra("index", 0)).solve("")
         resultTv.text = resultString
     }
 }

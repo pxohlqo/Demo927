@@ -6,12 +6,12 @@ import me.pxohlqo.algplayground.model.BaseSolution;
 import me.pxohlqo.soluinfo.SolutionInfo;
 
 
-@SolutionInfo(title = "demo title", description = "demo description", path = "me.pxohlqo.algplayground.model.misc.demo.DemoSolu")
+@SolutionInfo(title = "demo title", description = "demo description")
 public class DemoSolu extends BaseSolution {
 
     @NotNull
     @Override
-    public String solve(@NotNull Object... input) {
-        return "Demo result";
+    protected Object performSolve(@NotNull Object... input) {
+        return "demo output";
     }
 }

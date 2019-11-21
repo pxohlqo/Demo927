@@ -1,14 +1,13 @@
 package me.pxohlqo.soluinfo
 
 import java.io.File
-import java.net.URI
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
 @Target(AnnotationTarget.CLASS)
-annotation class SolutionInfo(val title: String, val description: String, val path: String)
+annotation class SolutionInfo(val title: String, val description: String)
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedAnnotationTypes("me.pxohlqo.soluinfo.SolutionInfo")
@@ -36,8 +35,9 @@ class SoluInfoProcessor : AbstractProcessor() {
         )
         val soluInfoAry = mutableListOf<ArrayList<String>>()
         roundEnv!!.getElementsAnnotatedWith(SolutionInfo::class.java).forEach {
-            val elem = it.getAnnotation(SolutionInfo::class.java)
-            val elemInfo = arrayListOf(elem.title, elem.description, elem.path)
+            val elemAnno = it.getAnnotation(SolutionInfo::class.java)
+            val pakName = processingEnv.elementUtils.getPackageOf(it).qualifiedName
+            val elemInfo = arrayListOf(elemAnno.title, elemAnno.description, "$pakName.${it.simpleName.toString()}")
             soluInfoAry.add(elemInfo)
         }
 
