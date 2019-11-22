@@ -48,6 +48,19 @@ abstract class BaseSolution {
         return resultBuilder.toString()
     }
 
+    protected fun IntArray.toString(): String {
+        val resultBuilder = StringBuilder("[")
+        this.forEachIndexed { index: Int, t: Int ->
+            resultBuilder.append(t)
+            if (index == this.size - 1) {
+                resultBuilder.append("]")
+            } else {
+                resultBuilder.append(",")
+            }
+        }
+        return resultBuilder.toString()
+    }
+
     protected fun Array<String>.toString(): String {
         val resultBuilder = StringBuilder("[")
         this.forEachIndexed { index: Int, t: String ->
@@ -59,6 +72,19 @@ abstract class BaseSolution {
             }
         }
         return resultBuilder.toString()
+    }
+
+    protected fun jPrintln(a: Any?) = if (a == null) println("NULL") else println(a)
+
+    protected fun jPrint(a: Any?) = if (a == null) print("NULL ") else print("$a ")
+
+    protected fun jPrintln(a: CharArray) = if (a.isEmpty()) println("EMPTY") else a.forEachIndexed { index, c ->
+        if (index == 0) print("[")
+        print(c)
+        if (index != a.size -1) print(", ") else {
+            print("]")
+            println()
+        }
     }
 
 

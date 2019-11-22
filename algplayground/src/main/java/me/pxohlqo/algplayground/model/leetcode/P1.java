@@ -68,12 +68,7 @@ public class P1 extends BaseSolution {
     @Override
     protected String outputPostprocess(@NotNull Object... output) {
         int[] resultAry = (int[]) output[0];
-        Integer[] integerAry = new Integer[resultAry.length];
-        for (int i = 0; i < resultAry.length; i++) {
-            integerAry[i] = resultAry[i];
-        }
-        String strAry = toString(integerAry);
-        return strAry;
+        return toString(resultAry);
     }
 
     void printClass(Object object) {

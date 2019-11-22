@@ -1,6 +1,8 @@
 package me.pxohlqo.algplayground
 
 import me.pxohlqo.algplayground.model.leetcode.P1
+import me.pxohlqo.algplayground.model.leetcode.P2
+import me.pxohlqo.algplayground.model.leetcode.P3
 import me.pxohlqo.algplayground.model.leetcode.P300
 import org.junit.Test
 
@@ -27,21 +29,16 @@ class ExampleUnitTest {
 
     @Test
     fun testObjectAry() {
-        val num: Int = 1
-        println(num.javaClass.simpleName)
-        println()
+        val aryInt = arrayOf(1, 2, 3).let { println(it.javaClass.simpleName) }
+        val intAry = intArrayOf(1, 2, 3).let { println(it.javaClass.simpleName) }
 
-        val numAry: Array<Int> = arrayOf(1, 2, 3)
-        println(numAry.javaClass.simpleName)
-        println()
+    }
 
-        val objAry: Array<Any> = arrayOf(1,2,3)
-        println(objAry.javaClass.simpleName)
-        println(objAry[0].javaClass.simpleName)
-        println()
-
-        objAry[0] = numAry
-        println(objAry.javaClass.simpleName)
-        objAry.forEach { println(it.javaClass.simpleName) }
+    @Test
+    fun testMyApproach() {
+        val p3 = P3()
+//        val input = "abcabcbb"
+        val input = "b"
+        println(p3.myApproach(input))
     }
 }
