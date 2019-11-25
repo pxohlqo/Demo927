@@ -45,6 +45,20 @@ Explanation: The answer is "wke", with the length of 3.
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 PATH=me.pxohlqo.algplayground.model.leetcode.P3
 
+SOLUTION=5. Longest Palindromic Substring
+DESCRIPTION=Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example 1:
+
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+Example 2:
+
+Input: "cbbd"
+Output: "bb"
+PATH=me.pxohlqo.algplayground.model.leetcode.P5
+
 SOLUTION=1. Two Sum
 DESCRIPTION=Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 

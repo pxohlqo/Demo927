@@ -1,9 +1,6 @@
 package me.pxohlqo.algplayground
 
-import me.pxohlqo.algplayground.model.leetcode.P1
-import me.pxohlqo.algplayground.model.leetcode.P2
-import me.pxohlqo.algplayground.model.leetcode.P3
-import me.pxohlqo.algplayground.model.leetcode.P300
+import me.pxohlqo.algplayground.model.leetcode.*
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -36,9 +33,9 @@ class ExampleUnitTest {
 
     @Test
     fun testMyApproach() {
-        val p3 = P3()
+        val p5 = P5()
 //        val input = "abcabcbb"
-        val input = "b"
-        println(p3.myApproach(input))
+        val input = "bab"
+        println(p5.approachVSCJS(input))
     }
 }
