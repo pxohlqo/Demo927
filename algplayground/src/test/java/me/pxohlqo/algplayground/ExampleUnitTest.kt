@@ -1,5 +1,6 @@
 package me.pxohlqo.algplayground
 
+import me.pxohlqo.algplayground.model.BaseSolution
 import me.pxohlqo.algplayground.model.leetcode.*
 import org.junit.Test
 
@@ -14,6 +15,49 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+
+    private fun String.toIntArray(): IntArray {
+        return this.removeSurrounding("[", "]").split(Regex(",\\s*")).map { it.toInt() }.toIntArray()
+    }
+
+    private fun Array<Int>.toString(): String {
+        val resultBuilder = StringBuilder("[")
+        this.forEachIndexed { index: Int, t: Int ->
+            resultBuilder.append(t)
+            if (index == this.size - 1) {
+                resultBuilder.append("]")
+            } else {
+                resultBuilder.append(",")
+            }
+        }
+        return resultBuilder.toString()
+    }
+
+    private fun IntArray.toString(): String {
+        val resultBuilder = StringBuilder("[")
+        this.forEachIndexed { index: Int, t: Int ->
+            resultBuilder.append(t)
+            if (index == this.size - 1) {
+                resultBuilder.append("]")
+            } else {
+                resultBuilder.append(",")
+            }
+        }
+        return resultBuilder.toString()
+    }
+
+    private fun Array<String>.toString(): String {
+        val resultBuilder = StringBuilder("[")
+        this.forEachIndexed { index: Int, t: String ->
+            resultBuilder.append(t)
+            if (index == this.size - 1) {
+                resultBuilder.append("]")
+            } else {
+                resultBuilder.append(", ")
+            }
+        }
+        return resultBuilder.toString()
     }
 
     @Test
@@ -33,9 +77,8 @@ class ExampleUnitTest {
 
     @Test
     fun testMyApproach() {
-        val p5 = P5()
-//        val input = "abcabcbb"
-        val input = "bab"
-        println(p5.approachVSCJS(input))
+        val p= P12()
+        val input = 1994
+        println(p.myApproach(input))
     }
 }
