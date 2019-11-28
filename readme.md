@@ -7,6 +7,7 @@
 - [ ] 优化 solve 计时逻辑
 
 ## ➡cursor
+LinkedList addAt
 刷题<br>
 自实现数据结构，自实现LruCache
 
