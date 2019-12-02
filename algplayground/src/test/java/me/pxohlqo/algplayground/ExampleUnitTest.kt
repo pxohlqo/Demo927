@@ -1,6 +1,7 @@
 package me.pxohlqo.algplayground
 
 import me.pxohlqo.algplayground.model.BaseSolution
+import me.pxohlqo.algplayground.model.algorithmAndDataStructrue.CDoublyLinkedList
 import me.pxohlqo.algplayground.model.leetcode.*
 import org.junit.Test
 
@@ -18,7 +19,8 @@ class ExampleUnitTest {
     }
 
     private fun String.toIntArray(): IntArray {
-        return this.removeSurrounding("[", "]").split(Regex(",\\s*")).map { it.toInt() }.toIntArray()
+        return this.removeSurrounding("[", "]").split(Regex(",\\s*")).map { it.toInt() }
+            .toIntArray()
     }
 
     private fun Array<Int>.toString(): String {
@@ -70,15 +72,17 @@ class ExampleUnitTest {
 
     @Test
     fun testObjectAry() {
-        val aryInt = arrayOf(1, 2, 3).let { println(it.javaClass.simpleName) }
-        val intAry = intArrayOf(1, 2, 3).let { println(it.javaClass.simpleName) }
+        val aryInt = println(arrayOf(1, 2, 3).javaClass.simpleName)
+        val intAry = println(intArrayOf(1, 2, 3).javaClass.simpleName)
 
     }
 
     @Test
     fun testMyApproach() {
-        val p= P12()
+        val p = P12()
         val input = 1994
         println(p.myApproach(input))
     }
+
+
 }

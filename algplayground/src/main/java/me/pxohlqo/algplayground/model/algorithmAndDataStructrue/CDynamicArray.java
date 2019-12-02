@@ -93,7 +93,6 @@ public class CDynamicArray<T> implements Iterable<T> {
 
 
     @NonNull
-    @android.support.annotation.NonNull
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
