@@ -1,14 +1,16 @@
 ## TODO
-#### High Priority!!!
-#### Normal Priority==
-- [ ] 整理数据结构注释
-#### Low Priority...
-- [ ] 从网络加载类
+ 紧急且重要|紧急不重要
+ ---------|--------
+ |
+ 不紧急但重要|不紧急也不重要
+ ----------|------------
+整理注释|自实现数据结构，自实现LruCache
+单元测试|
+
 
 ## ➡cursor
-LinkedList addAt<br>
-刷题<br>
-自实现数据结构，自实现LruCache
+HashTableOpenAddressingBase(https://github.com/williamfiset/Algorithms/blob/master/com/williamfiset/algorithms/datastructures/hashtable/HashTableOpenAddressingBase.java)
+
 
 
 
@@ -19,4 +21,3 @@ LinkedList addAt<br>
 4. [各种数据结构和算法 Java 实现] (https://github.com/williamfiset/Algorithms)
 
 ### 存在问题
-[ ] 注解处理器生成目录文件后需要手动运行task拷贝目录文件
